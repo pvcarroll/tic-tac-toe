@@ -33,6 +33,8 @@ a {
     border-top: solid white 2px;
     border-left: solid white 2px;
     color: #DDDDDD;
+    font-size: 80px;
+    vertical-align: middle;
 }
 
 .row2 .square {

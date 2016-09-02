@@ -6,3 +6,35 @@ body {
 a {
   color: #00B7FF;
 }
+
+.boardContainer {
+    width: 100%;
+    background-color: #222222;
+    text-align: center;
+}
+
+.board {
+    display: inline-block;
+    padding: 100px;
+}
+
+.row0, .row1, .row2 {
+    margin-bottom: -3px;
+}
+
+.col2 {
+    border-right: solid white 2px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    border-top: solid white 2px;
+    border-left: solid white 2px;
+    color: #DDDDDD;
+}
+
+.row2 .square {
+    border-bottom: solid white 2px;
+}

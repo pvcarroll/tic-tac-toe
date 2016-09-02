@@ -1,4 +1,4 @@
-var move = function(row, col) {
+var move = function(element, row, col) {
         alert("boardClicked: " + row + " " + col);
 
         var coordinates = {
@@ -10,9 +10,8 @@ var move = function(row, col) {
             data: JSON.stringify(coordinates),
             contentType: "application/json",
             success: function(data) {
-                alert("POST SUCCESS");
-                alert(data);
-                alert("data.piece = " + data.piece);
+                element.innerHTML = data.piece;
             }
         });
+        
 };

@@ -8,11 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post("/", function(req, res, next) {
-    game.processMove(req.body.row, req.body.col);
+    var piece = game.processMove(req.body.row, req.body.col);
     console.log("/ POST");
     console.log("req = %j", req);
     console.log("req.body = %j", req.body);
-    res.render("index", { title: "Tic-Tac-Toe" });
+    console.log("piece = " + piece);
+    res.json({piece: piece});
+    // res.sendFile("index", { title: "Tic-Tac-Toe" });
 });
 
 module.exports = router;

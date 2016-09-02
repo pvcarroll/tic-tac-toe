@@ -11,10 +11,8 @@ function checkForWinner() {
 
 module.exports = {
     processMove: function(row, col) {
-        console.log("GAME");
-        console.log(currentRound);
-        console.log("row = " + row);
-        console.log("col = " + col);
+        var piece = ((currentRound % 2 === 0) ? pieces.x : pieces.o);
         currentRound++;
+        return piece;
     }
 };

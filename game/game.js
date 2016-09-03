@@ -7,14 +7,13 @@ var board = [["", "", ""], ["", "", ""], ["", "", ""]];
 
 function checkForWinner() {
     var match = false;
-    var rowMatch, columnMatch, diagonalMatch, reverseDiagonalMatch;
+    var rowMatch, columnMatch;
+    var diagonalMatch = reverseDiagonalMatch = true;
     var rowValue, columnValue;
     var diagonalValue = board[0][0];
     var reverseDiagonalValue = board[0][board.length - 1];
 
     for (var i = 1; i < board.length; i++) {
-        diagonalMatch = true;
-        reverseDiagonalMatch = true;
         if (!diagonalValue || (board[i][i] !== diagonalValue)) {
             diagonalMatch = false;
         }
@@ -52,6 +51,9 @@ module.exports = {
         moveData.piece = piece;
         board[row][col] = piece;
         moveData.winner = checkForWinner();
+        if (!moveData.winner && (currentRound >= board.length * board.length - 1)) {
+            moveData.tie = true;
+        }
         console.log("round = " + currentRound);
         console.log("board: %j", board);
         currentRound++;

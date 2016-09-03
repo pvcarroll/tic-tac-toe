@@ -1,24 +1,28 @@
 var move = function(element, row, col) {
-        alert("boardClicked: " + row + " " + col);
 
         var coordinates = {
             row: row,
             col: col
         };
-        $.ajax({
-            type: "POST",
-            data: JSON.stringify(coordinates),
-            contentType: "application/json",
-            success: function(data) {
-                alert(data.winner);
-                if (data.winner) {
-                    $("#messageBanner").text(data.piece + " wins!");
-                    alert(data.piece + " wins!");
-                } else {
-                    $("#messageBanner").text(data.piece + "'s turn");
+        if (!element.innerHTML) {
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(coordinates),
+                contentType: "application/json",
+                success: function(data) {
+                    if (data.winner) {
+                        $("#messageBanner").text(data.piece + " wins!");
+                    } else {
+                        var turnMsg;
+                        if (data.piece === "X") {
+                            turnMsg = "O's turn";
+                        } else {
+                            turnMsg = "X's turn";
+                        }
+                        $("#messageBanner").text(turnMsg);
+                    }
+                    element.innerHTML = data.piece;
                 }
-                element.innerHTML = data.piece;
-            }
-        });
-        
+            });
+        }
 };

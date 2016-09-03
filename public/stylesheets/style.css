@@ -24,8 +24,7 @@ a {
 }
 
 .board {
-    display: inline-block;
-    padding: 50px 100px 100px;
+    padding: 50px 100px 30px;
 }
 
 .row0, .row1, .row2 {

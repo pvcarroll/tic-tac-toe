@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 router.post("/", function(req, res, next) {
     var moveData = game.processMove(req.body.row, req.body.col);
     res.json(moveData);
-    // res.render("index", { title: "Tic-Tac-Toe" });
 });
 
 router.post("/reset", function(req, res, next) {

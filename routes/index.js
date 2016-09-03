@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
 
 router.post("/", function(req, res, next) {
     var moveData = game.processMove(req.body.row, req.body.col);
-    console.log("/ POST");
     console.log("req = %j", req);
     console.log("req.body = %j", req.body);
     res.json(moveData);

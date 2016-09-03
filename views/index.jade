@@ -1,19 +1,20 @@
 extends layout
 
 block content
-  script(src="https://code.jquery.com/jquery-2.2.0.min.js")
-  script(src="javascripts/client.js")
-  .boardContainer
-      .board
-        .row0
-            .square.col0(onclick="move(this, 0, 0)")
-            .square.col1(onclick="move(this, 0, 1)")
-            .square.col2(onclick="move(this, 0, 2)")
-        .row1
-            .square.col0(onclick="move(this, 1, 0)")
-            .square.col1(onclick="move(this, 1, 1)")
-            .square.col2(onclick="move(this, 1, 2)")
-        .row2
-            .square.col0(onclick="move(this, 2, 0)")
-            .square.col1(onclick="move(this, 2, 1)")
-            .square.col2(onclick="move(this, 2, 2)")
+    script(src="https://code.jquery.com/jquery-2.2.0.min.js")
+    script(src="javascripts/client.js")
+    .boardContainer
+        #messageBanner
+        .board
+            .row0
+                .square.col0(onclick="move(this, 0, 0)")
+                .square.col1(onclick="move(this, 0, 1)")
+                .square.col2(onclick="move(this, 0, 2)")
+            .row1
+                .square.col0(onclick="move(this, 1, 0)")
+                .square.col1(onclick="move(this, 1, 1)")
+                .square.col2(onclick="move(this, 1, 2)")
+            .row2
+                .square.col0(onclick="move(this, 2, 0)")
+                .square.col1(onclick="move(this, 2, 1)")
+                .square.col2(onclick="move(this, 2, 2)")

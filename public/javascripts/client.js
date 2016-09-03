@@ -10,6 +10,7 @@ var move = function(element, row, col) {
             data: JSON.stringify(coordinates),
             contentType: "application/json",
             success: function(data) {
+                alert(data.winner);
                 element.innerHTML = data.piece;
             }
         });

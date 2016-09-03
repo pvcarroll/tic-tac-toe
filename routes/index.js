@@ -8,12 +8,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post("/", function(req, res, next) {
-    var piece = game.processMove(req.body.row, req.body.col);
+    var moveData = game.processMove(req.body.row, req.body.col);
     console.log("/ POST");
     console.log("req = %j", req);
     console.log("req.body = %j", req.body);
-    console.log("piece = " + piece);
-    res.json({piece: piece});
+    res.json(moveData);
     // res.sendFile("index", { title: "Tic-Tac-Toe" });
 });
 

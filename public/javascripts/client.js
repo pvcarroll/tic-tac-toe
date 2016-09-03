@@ -14,6 +14,8 @@ var move = function(element, row, col) {
                 if (data.winner) {
                     $("#messageBanner").text(data.piece + " wins!");
                     alert(data.piece + " wins!");
+                } else {
+                    $("#messageBanner").text(data.piece + "'s turn");
                 }
                 element.innerHTML = data.piece;
             }

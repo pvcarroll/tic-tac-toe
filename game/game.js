@@ -1,7 +1,7 @@
 var gameState = {
     currentRound: 0,
     gameOver: false,
-    pieces: { x: "X", o: "O"},
+    pieces: { x: "X", o: "O" },
     board: [["", "", ""], ["", "", ""], ["", "", ""]]
 }
 
@@ -62,5 +62,11 @@ module.exports = {
         }
         gameState.currentRound++;
         return moveData;
+    },
+
+    resetGame: function() {
+        gameState.currentRound = 0;
+        gameState.gameOver = false;
+        gameState.board = [["", "", ""], ["", "", ""], ["", "", ""]];
     }
 };

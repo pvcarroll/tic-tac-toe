@@ -28,3 +28,16 @@ var move = function(element, row, col) {
         });
     }
 };
+
+var resetBoard = function() {
+    alert("client.resetBoard()")
+    $.ajax({
+        type: "POST",
+        data: "",
+        url: "/reset",
+        contentType: "application/json",
+        success: function(data) {
+            alert("resetBoard client callback");
+        }
+    });
+};

@@ -34,9 +34,10 @@ var move = function(element, row, col) {
 };
 
 var resetBoard = function() {
+    var data = {gameNumber: gameNumber};
     $.ajax({
         type: "POST",
-        data: "",
+        data: JSON.stringify(data),
         url: "/reset",
         contentType: "application/json",
         success: function(data) {

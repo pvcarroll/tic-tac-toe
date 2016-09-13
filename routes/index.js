@@ -13,7 +13,7 @@ router.post("/", function(req, res, next) {
 });
 
 router.post("/reset", function(req, res, next) {
-    game.resetGame();
+    game.resetGame(req.body.gameNumber);
     res.render("index");
 });
 

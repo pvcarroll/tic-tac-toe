@@ -82,7 +82,8 @@ module.exports = {
         return moveData;
     },
 
-    resetGame: function() {
+    resetGame: function(gameNumber) {
+        var gameState = gameStates[gameNumber];
         gameState.currentRound = 0;
         gameState.gameOver = false;
         gameState.board = [["", "", ""], ["", "", ""], ["", "", ""]];

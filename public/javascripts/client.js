@@ -1,15 +1,19 @@
+var gameNumber;
+
 var move = function(element, row, col) {
 
-    var coordinates = {
+    var data = {
         row: row,
-        col: col
+        col: col,
+        gameNumber: gameNumber
     };
     if (!element.innerHTML) {
         $.ajax({
             type: "POST",
-            data: JSON.stringify(coordinates),
+            data: JSON.stringify(data),
             contentType: "application/json",
             success: function(data) {
+                gameNumber = data.gameNumber;
                 if (data.winner) {
                     $("#messageBanner").text(data.piece + " WINS!");
                 } else if (data.tie) {

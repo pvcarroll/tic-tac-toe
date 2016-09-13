@@ -1,11 +1,13 @@
-var gameState = {
-    currentRound: 0,
-    gameOver: false,
-    pieces: { x: "X", o: "O" },
-    board: [["", "", ""], ["", "", ""], ["", "", ""]]
+function GameState() {
+    this.currentRound = 0;
+    this.gameOver = false;
+    this.pieces = { x: "X", o: "O" };
+    this.board = [["", "", ""], ["", "", ""], ["", "", ""]];
 }
 
-function checkForWinner() {
+var gameStates = [];
+
+function checkForWinner(gameState) {
     var match = false;
     var rowMatch, columnMatch;
     var diagonalMatch = reverseDiagonalMatch = true;
@@ -45,7 +47,22 @@ function checkForWinner() {
 }
 
 module.exports = {
-    processMove: function(row, col) {
+    processMove: function(gameNumber, row, col) {
+        var gameNumber = gameNumber;
+        var gameState;
+
+        if (!gameNumber && gameNumber !== 0) {
+            gameNumber = gameStates.length;
+            // Initialize new game.
+            var numberOfGames = gameStates.length;
+            gameState = new GameState();
+            // Save game for future rounds.
+            gameStates[numberOfGames] = gameState;
+        } else {
+            // Use existing game.
+            gameState = gameStates[gameNumber];
+        }
+        
         if (gameState.gameOver) {
             return;
         }
@@ -53,13 +70,14 @@ module.exports = {
         var piece = ((gameState.currentRound % 2 === 0) ? gameState.pieces.x : gameState.pieces.o);
         moveData.piece = piece;
         gameState.board[row][col] = piece;
-        moveData.winner = checkForWinner();
+        moveData.winner = checkForWinner(gameState);
         if (!moveData.winner && (gameState.currentRound >= gameState.board.length * gameState.board.length - 1)) {
             moveData.tie = true;
         }
         if (moveData.winner || moveData.tie) {
             gameState.gameOver = true;
         }
+        moveData.gameNumber = gameNumber;
         gameState.currentRound++;
         return moveData;
     },
